@@ -1,0 +1,99 @@
+MongoDb commands for Databases:
+view all Databases
+show dbs
+
+Create a new or switch Databases:
+use dbName
+
+Viwe current Databases:
+db
+
+Delete Databases:
+db.dropDatabase()
+
+MongoDb commands for collections
+show collections
+show collections
+
+Create a collection named 'content'
+db.createCollection('content')
+
+Create a collection named 'content' 
+db.content.drop()
+
+
+MongoDb commands for Rows:
+Show all rows in a collection
+db.content.find()
+
+Insert one Row
+db.content.insert({
+    'name': 'Pragna',
+    'lang': 'Javascript',
+    'member_since': 2
+})
+
+Insert many Rows
+db.content.insertMany([{
+    'name': 'Pragna',
+    'lang': 'Javascript',
+    'member_since': 2
+},
+{
+    'name': 'Pragna',
+    'lang': 'Python',
+    'member_since': 2
+},
+{
+    'name': 'Pragna',
+    'lang': 'Java',
+    'member_since': 2
+}])
+
+Show all rows in a collection (Prettified)
+db.content.find().pretty()
+
+Search in a MongoDb Database
+db.content.find({lang:'Python'})
+
+Limit the number of rows in output
+db.content.find().limit(2)
+
+Count the number of rows in the output
+db.content.find().count()
+
+Update a row
+db.content.update({name: 'Shubham'},
+{$set:{
+    'name': 'Pragna',
+    'lang': 'Javascript',
+    'member_since': 21
+    }}, {upsert: true})
+
+MOngoDb Increment Operator
+db.content.update({name: 'Pragna'},
+{$inc:{
+    menber_since: 2
+}}
+)
+
+MongoDb Rename Operator
+db.content.update({name: 'Pragna'},
+{$remane:{
+    menber_since: 2
+}})
+
+Delete Row
+db.content.remove({name: 'Pragna'})
+
+Less than
+db.content.find({member_since: {$lt: 90}})
+
+Greater than
+db.content.find({member_since: {$gt: 90}})
+
+Less than or equal
+db.content.find({member_since: {$lte: 90}})
+
+Greater than or equal
+db.content.find({member_since: {$gte: 90}})
